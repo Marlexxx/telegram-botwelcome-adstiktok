@@ -9,9 +9,13 @@ PHOTO_URL = "https://i.postimg.cc/wBXHRZhc/68.png"
 MESSAGE_BIENVENUE = """
 Hey !  🍓 
 Bienvenue sur mon canal telegram ! 💫
+
 Pour te remercier je te partage mon insta privé que j'utilise tout les jours. C'est vraiment pour les intimes ahah 
+
 Envoie moi un message sur telegram pour me dire que tu t'es abonné et je t'enverrais une surprise 💗
-https://www.instagram.com/lunaarrsx/
+
+https://www.instagram.com/lunaa.cvn/
+
 A tout de suite !
 """
 # ──────────────────────────────────────────────────────────────────────────────
