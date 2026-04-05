@@ -5,7 +5,9 @@ from telegram.ext import ApplicationBuilder, ChatJoinRequestHandler, ContextType
 # ─── CONFIG ───────────────────────────────────────────────────────────────────
 TOKEN = "8587195300:AAHfsq024OiVRGj1GG84xQraFae9WigLOpw"
 CHANNEL_ID = "-1003793799869"
+
 PHOTO_URL = "https://i.postimg.cc/wBXHRZhc/68.png"
+
 MESSAGE_BIENVENUE = """
 Hey !  🍓 
 Bienvenue sur mon canal telegram ! 💫
