@@ -16,7 +16,7 @@ Pour te remercier je te partage mon insta privé que j'utilise tout les jours. C
 
 Envoie moi un message sur telegram pour me dire que tu t'es abonné et je t'enverrais une surprise 💗
 
-https://www.instagram.com/lunaa.cvn/
+https://www.instagram.com/lunarssu7/
 
 A tout de suite !
 """
