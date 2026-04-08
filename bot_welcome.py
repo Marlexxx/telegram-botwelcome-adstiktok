@@ -1,10 +1,15 @@
 import logging
+import os
+import json
 from datetime import datetime
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ChatJoinRequestHandler, ContextTypes
+import firebase_admin
+from firebase_admin import credentials, firestore
 
-TOKEN = "8340078525:AAGkUtFHaNcjuUVFT89SQhanc8eoS38mz9Y"
-CHANNEL_ID = "-1003793799869"
+# ─── CONFIG ───────────────────────────────────────────────────────────────────
+TOKEN = "8340078525:AAGkUtFHaNcjuUVFT89SQhanc8eoS38mz9Y"  # change pour le 2ème bot
+CHANNEL_ID = "-1003793799869"  # change pour le 2ème bot
 PHOTO_URL = "https://i.postimg.cc/wBXHRZhc/68.png"
 MESSAGE_BIENVENUE = """
 Hey !  🍓 
@@ -18,6 +23,13 @@ https://www.instagram.com/lunarssu7/
 
 A tout de suite !
 """
+# ──────────────────────────────────────────────────────────────────────────────
+
+# Init Firebase
+cred_json = json.loads(os.environ["FIREBASE_CREDENTIALS"])
+cred = credentials.Certificate(cred_json)
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 logging.basicConfig(level=logging.INFO)
 
@@ -27,6 +39,15 @@ async def handle_join_request(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     source = invite.name if invite and invite.name else "inconnu"
 
     print(f"📊 TRACKING — {datetime.now().strftime('%Y-%m-%d %H:%M')} | {user.first_name} (@{user.username}) | ID: {user.id} | SOURCE: {source}")
+
+    # Sauvegarde dans Firestore
+    db.collection("subscribers").document(str(user.id)).set({
+        "user_id": user.id,
+        "first_name": user.first_name,
+        "username": user.username,
+        "source": source,
+        "joined_at": datetime.now().isoformat()
+    })
 
     try:
         await ctx.bot.send_photo(
